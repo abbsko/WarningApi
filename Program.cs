@@ -1,6 +1,10 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using WarningApi.Business;
+
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<WarningService>();
 
 builder.Services.AddCors(options =>
 {
@@ -15,9 +19,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-
 app.UseCors();
-
 app.MapControllers();
 
 app.Run();

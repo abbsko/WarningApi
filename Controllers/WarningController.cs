@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WarningApi.Business;
 
@@ -6,32 +7,53 @@ namespace WarningApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class WarningController : ControllerBase
-{       
+{    
+    private readonly IHttpClientFactory httpClientFactory;
+    private readonly WarningService service;
+
+    private const string BaseWeatherApi = "";
+
+    public WarningController(IHttpClientFactory httpClientFactory, WarningService service)
+    {
+        this.httpClientFactory = httpClientFactory;
+        this.service = service;
+    }   
+
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok("Kontrollern funkar:)");
+        return Ok("Lägg Till /Stad/Datum för en varning");
     }
 
     [HttpGet("{city}/{date}")]
-    public IActionResult GetDetails(string city, DateOnly date)
+    public async Task<IActionResult> GetDetails(string city, DateOnly date)
     {
-        var service = new WarningService();
-        return Ok
-        (
-            service.GetWarning(DebugWeatherInfo(city, date))
-        );
+        var info = await GetWeatherInfo(city, date);
+
+        if (info == null)
+        {
+            return NotFound($"Kunde inte hitta väder rapport för {city} under {date}");
+        }
+
+        return Ok( service.GetWarning(info) );
     }
 
-    private WeatherInfo DebugWeatherInfo(string city, DateOnly date)
+    private async Task<WeatherInfo?> GetWeatherInfo(string city, DateOnly date)
     {
-        return new WeatherInfo()
+        var client = httpClientFactory.CreateClient();
+        var apiUrl = $"{BaseWeatherApi}/api/weather/{city}/{date:yyyy-MM-dd}";
+
+        try
         {
-            City = city,
-            Date = date,
-            WindSpeed = Random.Shared.Next(0, 100),
-            Temperature = Random.Shared.Next(-100, 100),
-            Description = "Slumpmässigt genererat debug väder"
-        };
+            var response = await client.GetAsync(apiUrl);
+            response.EnsureSuccessStatusCode();
+
+            var weatherInfo = await response.Content.ReadFromJsonAsync<WeatherInfo>();
+            return weatherInfo;
+        }
+        catch (System.Exception)
+        {
+            return null;
+        }
     }
 }

@@ -15,39 +15,35 @@ public class WarningService
             details.AppendLine("Risk för halka");
         }
 
-        switch (info.Temperature)
-        {
-            case > 100:
-                level += 100;
-                details.AppendLine(":skull:");
-                break;
-            case >= 40:
-                level += 3;
-                details.AppendLine("Dödlig värme utomhus, undvik");
-                break;
-            case >= 27:
-                level += 2;
-                details.AppendLine("Hög värme som kan vara farlig");
-                break;
-            case <= -40:
-                level += 3;
-                details.AppendLine("Stanna inne, det är actually Day After Tomorrow vibbar ute");
-                break;
-            case <= -30:
-                level += 2;
-                details.AppendLine("Undvik att vara ute, den låga temperaturen kan vara farlig");
-                break;
-            case <= -20:
-                level += 1;
-                details.AppendLine("Ta på dig en mössa");
-                break;
-        }
-
         switch (info.WindSpeed)
         {
-            case > 5:
+            case < 15: 
                 level += 1;
-                details.AppendLine("");
+                details.AppendLine("Hög vindhastighet");
+                break;
+            case < 20: 
+                level += 1;
+                details.AppendLine("Väldigt hög vindhastighet");
+                break;
+            case < 25: 
+                level += 2;
+                details.AppendLine("Storm");
+                break;
+            case < 30: 
+                level += 2;
+                details.AppendLine("Våldsam storm");
+                break;
+            case < 35:
+                level += 3;
+                details.AppendLine("Hurrikan");
+                break;
+            case < 45:
+                level += 3;
+                details.AppendLine("Våldsam hurrikan");
+                break;
+            default: 
+                level += 4;
+                details.AppendLine("Tornad");
                 break;
         }
 
