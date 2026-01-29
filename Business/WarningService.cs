@@ -9,13 +9,13 @@ public class WarningService
         var level = 0;
         var details = new StringBuilder();
 
-        if (info.Temperature <= -4)
+        if (info.TempC <= -4)
         {
             level += 1;
             details.AppendLine("Risk för halka");
         }
 
-        switch (info.Temperature)
+        switch (info.TempC)
         {
             case < -40:
                 level += 3;
@@ -30,8 +30,8 @@ public class WarningService
                 details.AppendLine("Ta på dig en mössa");
                 break;
         }
-        
-        switch (info.WindSpeed)
+
+        switch (info.WindSpeedMS)
         {
             case < 15: 
                 level += 1;

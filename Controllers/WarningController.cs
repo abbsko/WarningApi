@@ -40,7 +40,7 @@ public class WarningController : ControllerBase
     private async Task<WeatherInfo?> GetWeatherInfo(string city, DateOnly date)
     {
         var client = httpClientFactory.CreateClient();
-        var apiUrl = $"{BaseWeatherApi}/api/weather/{city}/{date:yyyy-MM-dd}";
+        var apiUrl = $"{BaseWeatherApi}/api/weather/?city={city}";
 
         try
         {
