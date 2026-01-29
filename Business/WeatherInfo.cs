@@ -1,9 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-
-public class WeatherDbContext : DbContext
-{
-    public DbSet<WeatherInfo> WeatherInfos => Set<WeatherInfo>();
-}
+namespace WarningApi.Business;
 
 public class WeatherInfo
 {
