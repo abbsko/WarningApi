@@ -30,6 +30,7 @@ public class WarningService
                 details.AppendLine("Ta på dig en mössa");
                 break;
         }
+        
         switch (info.WindSpeed)
         {
             case < 15: 
