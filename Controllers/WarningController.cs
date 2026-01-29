@@ -10,7 +10,7 @@ public class WarningController : ControllerBase
     private readonly IHttpClientFactory httpClientFactory;
     private readonly WarningService service;
 
-    private const string BaseWeatherApi = "http://10.27.1.180:5266";
+    private const string BaseWeatherApi = "http://localhost:5266";
 
     public WarningController(IHttpClientFactory httpClientFactory, WarningService service)
     {
