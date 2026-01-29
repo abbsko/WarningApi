@@ -32,7 +32,7 @@ public class WarningController : ControllerBase
 
         if (info == null)
         {
-            return NotFound($"Kunde inte hitta väder rapport för {city} under {date}");
+            return NotFound($"Kunde inte hitta väderrapport för {city} under {date}");
         }
 
         return Ok( service.GetWarning(info) );
