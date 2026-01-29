@@ -17,18 +17,43 @@ public class WarningService
 
         switch (info.Temperature)
         {
-            case < -40:
+            case > 100:
+                level += 100;
+                details.AppendLine(":skull:");
+                break;
+            case >= 40:
+                level += 3;
+                details.AppendLine("Dödlig värme utomhus, undvik");
+                break;
+            case >= 27:
+                level += 2;
+                details.AppendLine("Hög värme som kan vara farlig");
+                break;
+            case <= -40:
                 level += 3;
                 details.AppendLine("Stanna inne, det är actually Day After Tomorrow vibbar ute");
                 break;
-            case < -30:
+            case <= -30:
                 level += 2;
                 details.AppendLine("Undvik att vara ute, den låga temperaturen kan vara farlig");
                 break;
-            case < -20:
+            case <= -20:
                 level += 1;
                 details.AppendLine("Ta på dig en mössa");
                 break;
+        }
+
+        switch (info.WindSpeed)
+        {
+            case > 5:
+                level += 1;
+                details.AppendLine("");
+                break;
+        }
+
+        if (level > 0)
+        {
+            details.Insert(0, "!!VARNING!!\n");
         }
 
         return new Warning()

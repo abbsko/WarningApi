@@ -7,7 +7,7 @@ public class WeatherDbContext : DbContext
 
 public class WeatherInfo
 {
-    public required DateOnly date { get; set; }
+    public required DateOnly Date { get; set; }
     public required int Temperature { get; set; }
     public required string Description { get; set; }
     public required int WindSpeed { get; set; }

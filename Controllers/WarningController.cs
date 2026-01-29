@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WarningApi.Business;
 
 namespace WarningApi.Controllers;
 
@@ -9,16 +10,28 @@ public class WarningController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok("Warning from controller!");
+        return Ok("Kontrollern funkar:)");
     }
 
-    [HttpGet("details")]
-    public IActionResult GetDetails()
+    [HttpGet("{city}/{date}")]
+    public IActionResult GetDetails(string city, DateOnly date)
     {
-        return Ok(new
+        var service = new WarningService();
+        return Ok
+        (
+            service.GetWarning(DebugWeatherInfo(city, date))
+        );
+    }
+
+    private WeatherInfo DebugWeatherInfo(string city, DateOnly date)
+    {
+        return new WeatherInfo()
         {
-            Message = "Warning details",
-            Level = "High"
-        });
+            City = city,
+            Date = date,
+            WindSpeed = Random.Shared.Next(0, 100),
+            Temperature = Random.Shared.Next(-100, 100),
+            Description = "Slumpmässigt genererat debug väder"
+        };
     }
 }
