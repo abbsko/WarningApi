@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Zd3uv3e6Sms=",
+  "dgSpecHash": "7ZCpywfmKzA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Owner\\Documents\\suvnet25\\WarningApi\\warningApi.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.2\\microsoft.entityframeworkcore.10.0.2.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.2\\microsoft.entityframeworkcore.abstractions.10.0.2.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.2\\microsoft.entityframeworkcore.analyzers.10.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
