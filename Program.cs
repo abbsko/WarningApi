@@ -20,7 +20,4 @@ app.UseCors();
 
 app.MapControllers();
 
-app.MapGet("/warning", () => "Warning!")
-   .WithName("GetWarning");
-
 app.Run();
