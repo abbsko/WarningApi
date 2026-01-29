@@ -11,7 +11,7 @@ public class WarningController : ControllerBase
     private readonly IHttpClientFactory httpClientFactory;
     private readonly WarningService service;
 
-    private const string BaseWeatherApi = "";
+    private const string BaseWeatherApi = "http://localhost:5266";
 
     public WarningController(IHttpClientFactory httpClientFactory, WarningService service)
     {
