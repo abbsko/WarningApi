@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Owner\\Documents\\suvnet25\\WarningApi\\weatherApi.csproj",
-      "projectName": "weatherApi",
-      "projectPath": "C:\\Users\\Owner\\Documents\\suvnet25\\WarningApi\\weatherApi.csproj",
+      "projectUniqueName": "C:\\Users\\Owner\\Documents\\suvnet25\\WarningApi\\warningApi.csproj",
+      "projectName": "warningApi",
+      "projectPath": "C:\\Users\\Owner\\Documents\\suvnet25\\WarningApi\\warningApi.csproj",
       "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Owner\\Documents\\suvnet25\\WarningApi\\obj\\",
       "projectStyle": "PackageReference",
