@@ -15,6 +15,21 @@ public class WarningService
             details.AppendLine("Risk för halka");
         }
 
+        switch (info.Temperature)
+        {
+            case < -40:
+                level += 3;
+                details.AppendLine("Stanna inne, det är actually Day After Tomorrow vibbar ute");
+                break;
+            case < -30:
+                level += 2;
+                details.AppendLine("Undvik att vara ute, den låga temperaturen kan vara farlig");
+                break;
+            case < -20:
+                level += 1;
+                details.AppendLine("Ta på dig en mössa");
+                break;
+        }
         switch (info.WindSpeed)
         {
             case < 15: 
