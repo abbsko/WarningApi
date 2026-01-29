@@ -1,0 +1,1 @@
+/api/weather/{city}/{dateOnly}
