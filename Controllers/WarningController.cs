@@ -45,10 +45,7 @@ public class WarningController : ControllerBase
 
         try
         {
-            var response = await client.GetAsync(apiUrl);
-            response.EnsureSuccessStatusCode();
-
-            var weatherInfo = await response.Content.ReadFromJsonAsync<WeatherInfo>();
+            var weatherInfo = await client.GetFromJsonAsync<WeatherInfo>(apiUrl);
             return weatherInfo;
         }
         catch (System.Exception)
